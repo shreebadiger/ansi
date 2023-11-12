@@ -23,7 +23,7 @@
    name: common
    tasks_from: app-prereq
   vars:
-   app-dir: /app
+   app_dir: /app
    component: backend
 
 - name: Installing nodejs dependencies
