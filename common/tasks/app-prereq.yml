@@ -1,15 +1,15 @@
    -  name: Deleting old nginx content
       ansible.builtin.file:
-       name: "{{ app_dir }}""
+       name: "{{ app_dir }}"
        state: absent
 
    -  name: Creating  nginx directory
       ansible.builtin.file:
-       name: "{{ app_dir }}""
+       name: "{{ app_dir }}"
        state: directory
 
    -  name: Downlaoding and extracting content
       ansible.builtin.unarchive:
        src: https://expense-artifacts.s3.amazonaws.com/{{component}}.zip 
-       dest: "{{ app_dir }}""
+       dest: "{{ app_dir }}"
        remote_src: yes
