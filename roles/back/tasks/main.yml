@@ -18,18 +18,19 @@
   ansible.builtin.user:
    name: expense
 
- - name: Importing app pre requisites
-      ansible.builtin.import_role:
-       name: common
-       tasks_from: app_prereq
-      vars:
-       app-dir: /app
-       component: backend
+- name: Importing app pre requisites
+  ansible.builtin.import_role:
+   name: common
+   tasks_from: app-prereq
+  vars:
+   app-dir: /app
+   component: backend
 
 - name: Installing nodejs dependencies
   ansible.builtin.shell: npm install    
   args:
    chdir: /app
+   
 
 - name: Install mysql client
   ansible.builtin.dnf:
