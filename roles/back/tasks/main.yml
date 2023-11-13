@@ -38,7 +38,7 @@
    state: present
 
 - name: load the schema
-  ansible.builtin.shell: mysql -h mysql-{{env}}.sbadiger93.online	 -uroot -p{{MYSQL_ROOT_PASSWORD}} < /app/schema/backend.sql 
+  ansible.builtin.shell: mysql -h "{{ lookup ( 'amazon.aws.aws_ssm', 'backend.{{env}}.DB_HOST', region='us-east-1' ) }}"	 -u "{{ lookup ( 'amazon.aws.aws_ssm', 'backend.{{env}}.DB_USER', region='us-east-1' ) }}" -p"{{ lookup ( 'amazon.aws.aws_ssm', 'backend.{{env}}.DB_PASS', region='us-east-1' ) }} < /app/schema/backend.sql 
 
 - name: Starting mysql backend service
   ansible.builtin.systemd:
@@ -46,3 +46,5 @@
    state: restarted
    enabled: yes
    daemon-reload: yes
+
+   
