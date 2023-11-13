@@ -1,0 +1,5 @@
+- name: Demo on Parameter Role
+  hosts: localhost
+  tasks:
+     - name: Acccess parameters from aws 
+       debug: msg= "{{ lookup ( 'amazon.aws.aws_ssm' 'sample' region='us-east-1' ) }}"
