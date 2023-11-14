@@ -7,4 +7,4 @@
       
     - name: Printing numbers of users
       ansible.builtin.debug:
-      msg: "{{ OUT }}"
+       msg: "{{ OUT }}"
