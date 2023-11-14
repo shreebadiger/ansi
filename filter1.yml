@@ -3,7 +3,7 @@
   tasks:
      - name: Printing no of users
        ansible.builtin.shell: uptime
-       register: out
+       register: OUT
 
      - name: Printing only number
        ansible.builtin.debug:
