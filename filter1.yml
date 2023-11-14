@@ -7,4 +7,4 @@
 
      - name: Printing only number
        ansible.builtin.debug:
-        msg: "{{ (((OUT.stdout | split(','))[1] | split(' '))[0]}}"
+        msg: "{{ (((OUT.stdout | split(','))[1] | split(' '))[0] }}"
