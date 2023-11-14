@@ -1,0 +1,10 @@
+- name: Demo on filter
+  hosts: localhost
+  tasks:
+     - name: Printing no of users
+       ansible.builtin.shell: uptime
+       register: out
+
+     - name: Printing only number
+       ansible.builtin.debug:
+        msg: "{{ (OUT.stdout | split(','))[1] }}"
