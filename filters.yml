@@ -1,6 +1,6 @@
--name: Demo on filters
- hosts: localhost
- tasks:
+- name: Demo on filters
+  hosts: localhost
+  tasks:
     - name: print no of users
       ansible.builtin.shell: uptime
       register: OUT
