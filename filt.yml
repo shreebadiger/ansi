@@ -1,5 +1,5 @@
 - name: Demo on filter
-  hosts: localhot
+  hosts: localhost
   tasks:
       - name: Printing no of users
         ansible.builtin.shell: uptime
