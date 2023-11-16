@@ -1,4 +1,4 @@
-- name: Copying
+- name: Copying ELK repo file
   ansible.builtin.template:
    src: elastic.repo
    dest: /etc/yum.repos.d/elastic.repo
