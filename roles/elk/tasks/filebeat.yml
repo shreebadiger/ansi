@@ -1,0 +1,10 @@
+- name: Copying ELK Repo file
+  ansible.builtin.template:
+   src: elastic.repo
+   dest: /etc/yum.repos.d/elastic.repo
+
+- name: Installing Filebeat Software
+  ansible.builtin.dnf:
+   name: filebeat
+   state: installed
+   
