@@ -8,3 +8,18 @@
    name: filebeat
    state: installed
 
+- name: COPYING ELK CONFIGURATION FILE
+  ansible.builtin.template:
+   src: filebeat
+   dest: /etc/filebeat/filebeat.yml
+
+- name: RESTARTING FILEBEAT
+  ansible.builtin.systemd:
+   name: elk
+   state: restarted
+   enabled: yes
+  
+
+
+
+
