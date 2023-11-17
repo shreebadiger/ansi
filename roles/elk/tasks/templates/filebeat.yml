@@ -28,8 +28,9 @@ filebeat.inputs:
   enabled: true
 
   # Paths that should be crawled and fetched. Glob based paths.
-  paths: {{ log_file }}
-    - 
+  paths:
+   - {{ log_file }}
+   
     #- c:\programdata\elasticsearch\logs\*
 
   # Exclude lines. A list of regular expressions to match. It drops the lines that are
