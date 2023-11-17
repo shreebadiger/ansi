@@ -3,3 +3,18 @@
    src: elastic.repo
    dest: /etc/yum.repos.d/elastic.repo
 
+- name: INSTALLING FILEBEAT
+  ansible.builtin.dnf:
+   name: filebeat
+   state: installed
+
+- name: COPYING ELK CONFIG FILE
+  ansible.builtin.template:
+   src: filebeat.yml
+   dest: /etc/filebeat/filebeat.yml
+
+- name: RESTARTING FILEBEAT
+  ansible.builtin.systemd:
+   name: filebeat
+   state: restarted
+   enables: yes
