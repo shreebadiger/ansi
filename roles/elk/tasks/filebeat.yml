@@ -15,7 +15,7 @@
 
 - name: RESTARTING FILEBEAT
   ansible.builtin.systemd:
-   name: elk
+   name: filebeat
    state: restarted
    enabled: yes
   
