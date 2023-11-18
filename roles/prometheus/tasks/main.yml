@@ -8,4 +8,5 @@
    name: prometheus
    state: restarted
    enabled: yes
+   daemon-reload: yes
 
