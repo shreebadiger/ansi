@@ -1,7 +1,7 @@
 - name: Copying prometheus configuration file
- ansible.builtin.template:
-  src: node-exporter.yml
-  dest: /opt/prometheus/node-exporter.yml
+  ansible.builtin.template:
+   src: node-exporter.yml
+   dest: /opt/prometheus/node-exporter.yml
 
 - name: Restarting prometheus
   ansible.builtin.systemd:
