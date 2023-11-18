@@ -28,7 +28,7 @@
        tasks_from: filebeat
 
     - name: IMPORTING NODE EXPORT FILE
-      ansible.builtin.import_file:
+      ansible.builtin.import_role:
        name: prometheus
        tasks_from: node-exporter
 
