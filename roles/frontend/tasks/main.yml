@@ -22,9 +22,9 @@
         state: restarted
         enabled: yes
     
-    - name: IMPORTING ELK REPO FILE
+    - name: Imporing elk role
       ansible.builtin.import_role:
-       name: elk2
+       name: elk
        tasks_from: filebeat
 
    # - name: IMPORTING NODE EXPORT FILE
