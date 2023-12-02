@@ -1,0 +1,11 @@
+- name: Copying prometheus config file
+  ansible.builtin.template:
+   src: prometheus.yml
+   dest: /opt/prometheus/prometheus.yml
+
+- name: Restarting prometheus
+  ansible.builtin.systemd:
+   name: prometheus
+   state: restarted
+   enabled: yes
+   daemon-reload: yes
