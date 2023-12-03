@@ -37,7 +37,7 @@ scrape_configs:
         target_label: name
     ec2_sd_configs:
       - region: us-east-1
-        port: 9100
+   #     port: 9100
         filters:
           - name: "tag:Monitor"
             values: ["true"]
