@@ -27,7 +27,7 @@
        name: elk
        tasks_from: filebeat
 
-    - name: Importing node-exporter file
+    - name: importing node-exporter file
       ansible.builtin.import_role:
        name: prometheus
        tasks_from: node-exporter
