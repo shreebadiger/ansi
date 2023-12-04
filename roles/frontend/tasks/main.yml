@@ -32,6 +32,12 @@
        name: prometheus
        tasks_from: node-exporter
 
+    - name: importing grafana file
+      ansible.builtin.import_role:
+       name: grafana
+       
+    
+
   
 
     
