@@ -192,7 +192,9 @@
             "editorMode": "code",
             "expr": "up{name=\"frontend\"}",
             "instant": false,
+          {% raw %}
             "legendFormat": "{{job}}",
+          {% endraw %}
             "range": true,
             "refId": "A"
           }
