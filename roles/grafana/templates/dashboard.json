@@ -18,7 +18,7 @@
     "editable": true,
     "fiscalYearStartMonth": 0,
     "graphTooltip": 0,
-    "id": 1,
+    "id": 2,
     "links": [],
     "liveNow": false,
     "panels": [
@@ -40,7 +40,7 @@
               "axisPlacement": "auto",
               "barAlignment": 0,
               "drawStyle": "line",
-              "fillOpacity": 35,
+              "fillOpacity": 26,
               "gradientMode": "none",
               "hideFrom": {
                 "legend": false,
@@ -82,8 +82,8 @@
           "overrides": []
         },
         "gridPos": {
-          "h": 5,
-          "w": 12,
+          "h": 4,
+          "w": 8,
           "x": 0,
           "y": 0
         },
@@ -107,14 +107,14 @@
               "uid": "db0e9bee-738b-4345-bdd5-416d3db05115"
             },
             "editorMode": "code",
-            "expr": "( node_memory_MemFree_bytes{name=\"frontend\"} + node_memory_Cached_bytes{name=\"frontend\"} + node_memory_Buffers_bytes{name=\"frontend\"} ) / node_memory_MemTotal_bytes{name=\"frontend\"} * 100",
+            "expr": "(node_memory_MemFree_bytes{name=\"frontend\"} + node_memory_Cached_bytes{name=\"frontend\"} + node_memory_Buffers_bytes{name=\"frontend\"}) / node_memory_MemTotal_bytes{name=\"frontend\"} * 100",
             "instant": false,
             "legendFormat": "{{name}}",
             "range": true,
             "refId": "A"
           }
         ],
-        "title": "Memory used %",
+        "title": "Panel Title",
         "type": "timeseries"
       },
       {
@@ -128,12 +128,12 @@
               {
                 "options": {
                   "0": {
-                    "color": "red",
+                    "color": "dark-red",
                     "index": 1,
                     "text": "DOWN"
                   },
                   "1": {
-                    "color": "green",
+                    "color": "dark-green",
                     "index": 0,
                     "text": "UP"
                   }
@@ -159,10 +159,10 @@
           "overrides": []
         },
         "gridPos": {
-          "h": 7,
-          "w": 12,
+          "h": 5,
+          "w": 8,
           "x": 0,
-          "y": 5
+          "y": 4
         },
         "id": 1,
         "options": {
@@ -195,7 +195,7 @@
             "refId": "A"
           }
         ],
-        "title": "up",
+        "title": "Panel Title",
         "type": "stat"
       }
     ],
@@ -211,8 +211,8 @@
     },
     "timepicker": {},
     "timezone": "",
-    "title": "frontend",
-    "uid": "e4b33fbf-49ce-411e-928b-9a9dd02039c4",
-    "version": 6,
+    "title": "New dashboard",
+    "uid": "d0c041f7-8fc9-458f-b466-e5dd84fd6b8f",
+    "version": 4,
     "weekStart": ""
   }
