@@ -107,7 +107,7 @@
               "uid": "db0e9bee-738b-4345-bdd5-416d3db05115"
             },
             "editorMode": "code",
-            "expr": "(node_memory_MemFree_bytes{name=\"frontend\"} + node_memory_Cached_bytes{name=\"frontend\"} + node_memory_Buffers_bytes{name=\"frontend\"}) / node_memory_MemTotal_bytes{name=\"frontend\"} * 100",
+            "expr": "(node_memory_MemFree_bytes{name=\"{{component}}\"} + node_memory_Cached_bytes{name=\"{{component}}\"} + node_memory_Buffers_bytes{name=\"{{component}}\"}) / node_memory_MemTotal_bytes{name=\"{{component}}\"} * 100",
             "instant": false,
           {% raw %}
             "legendFormat": "{{name}}",
@@ -190,7 +190,7 @@
               "uid": "db0e9bee-738b-4345-bdd5-416d3db05115"
             },
             "editorMode": "code",
-            "expr": "up{name=\"frontend\"}",
+            "expr": "up{name=\"{{component}}\"}",
             "instant": false,
           {% raw %}
             "legendFormat": "{{job}}",
@@ -215,7 +215,7 @@
     },
     "timepicker": {},
     "timezone": "",
-    "title": "frontend",
+    "title": "{{component}}",
     "uid": "d0c041f7-8fc9-458f-b466-e5dd84fd6b8f",
     "version": 4,
     "weekStart": ""
