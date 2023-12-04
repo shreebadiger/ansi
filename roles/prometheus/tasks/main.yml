@@ -1,5 +1,5 @@
 - name: copy prometheus.yml file
-  ansible.buitlin.template:
+  ansible.builtin.template:
    src: prometheus.yml
    dest: /opt/prometheus/prometheus.yml
 
