@@ -8,20 +8,15 @@
    src: alert-rules.yml
    dest: /opt/prometheus/alert-rules.yml
 
-- name: start prometheus
-  ansible.builtin.systemd:
-   name: prometheus
-   state: restarted
-   enabled: yes
+- name: Reload prometheus
+  ansible.builtin.shell: kill -1 $(ps -ef | grep /opt/prometheus/prometheus | grep -v grep | awk '{print $2}')
   
 - name: copy alertmanger config file
   ansible.builtin.template:
    src: alertmanager.yml
    dest: /opt/alertmanager/alertmanager.yml
 
-- name: start prometheus
-  ansible.builtin.systemd:
-   name: alertmanager
-   state: restarted
-   enabled: yes
+- name: Reload alertmanager
+  ansible.builtin.shell: kill -1 $(ps -ef | grep /opt/alertmanager/alertmanager | grep -v grep | awk '{print $2}')
+   
 
