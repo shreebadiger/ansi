@@ -1,0 +1,12 @@
+groups:
+- name: {{ component }}- {{env}}
+  rules:
+  - alert: CPUUsage alert
+    expr: avg by (instance) ((1 - rate(node_cpu_seconds_total{mode="idle"}[5m])) * 100) > 70
+    for: 1m
+    labels:
+      severity: warning
+      component: {{ component }}
+      env: {{ env }}
+    annotations:
+      summary: warning | cpu usage alert
