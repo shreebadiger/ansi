@@ -39,12 +39,12 @@
     - name: Generate alert yml file
       ansible.builtin.template:
        src: alert-rules.yml
-       dest: /tmp/{{ component }}-{{ env }}
+       dest: /tmp/{{component}}-{{env}}.yml
 
     - name: Upload alert file into S3 
       community.aws.s3_sync:
        bucket: d76-prometheus-alert-rule
-       file_root: /tmp/{{ component }}-{{ env }}
+       file_root: /tmp/{{component}}-{{env}}.yml
        
     
 
