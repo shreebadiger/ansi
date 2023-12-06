@@ -8,6 +8,20 @@
    src: common.yml
    dest: /opt/prometheus/alert-rules/common.yml
 
+- name: List all file in the s3 backet
+  amazon.aws.s3_object:
+   bucket: d76-prometheus-alert-rule
+   mode: list
+  register: OUT
+
+- name: List all file in the s3 backet
+  amazon.aws.s3_object:
+   bucket: d76-prometheus-alert-rule
+   mode: get
+   object: "{{item}}"
+   dest: /opt/prometheus/alert-rules/{{item}}
+  loop: "{{OUT.s3_keys}}"
+  
 - name: Reload prometheus
   ansible.builtin.shell: kill -1 $(ps -ef | grep /opt/prometheus/prometheus | grep -v grep | awk '{print $2}')
   
