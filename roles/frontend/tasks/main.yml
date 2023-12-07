@@ -47,6 +47,10 @@
        object: "{{component}}-{{env}}.yml"
        src: /tmp/{{component}}-{{env}}.yml
        mode: put
+
+    - name: trigger prometheus alert job role
+      ansible.builtin.shell: curl -u admin:admin123 "http://172.31.40.166:8080/job/prometheus-reload/build?token=prometheus"
+
        
     
 
