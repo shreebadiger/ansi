@@ -44,7 +44,7 @@ groups:
     annotations:
       summary: critical | memory usage alert
 
-  - alert: Networdbw wait queue
+  - alert: Networkbw wait queue
     expr: rate(node_ethtool_bw_in_allowance_exceeded[1m]) > 0 
     for: 3m
     labels:
@@ -52,5 +52,5 @@ groups:
       component: {{ component }}
       env: {{ env }}
     annotations:
-      summary: Critical | Networdbw wait queue
+      summary: Critical | Networkbw wait queue
   
