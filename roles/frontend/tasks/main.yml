@@ -48,7 +48,18 @@
       ansible.builtin.dnf:
        name: nri-nginx
        state: installed
-       
+
+    - name: Copy newrelic nginx config file
+      ansible.builtin.template:
+       src: nr-nginx.yml
+       dest: /etc/newrelic-infra/integrations.d/nginx-config.yml
+
+    - name: Copy newrelic nginx log shipping config file
+      ansible.builtin.template:
+       src: nr-nginx-log.yml
+       dest: /etc/newrelic-infra/logging.d/nginx-log.yml
+
+
        
     
 
