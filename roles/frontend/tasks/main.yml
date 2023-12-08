@@ -1,12 +1,12 @@
     - name: Installing nginx
       ansible.builtin.dnf:
-        name: nginx
-        state: present
+       name: nginx
+       state: present
 
     - name: Copying expense conf file
       ansible.builtin.template:
-        src: expense.conf
-        dest: /etc/nginx/default.d/expense.conf
+       src: expense.conf
+       dest: /etc/nginx/default.d/expense.conf
      
     - name: Importing app pre requisites
       ansible.builtin.import_role:
@@ -18,28 +18,31 @@
 
     - name: Starting nginx server
       ansible.builtin.systemd:
-        name: nginx
-        state: restarted
-        enabled: yes
+       name: nginx
+       state: restarted
+       enabled: yes
     
-    - name: Imporing elk role
-      ansible.builtin.import_role:
-       name: elk
-       tasks_from: filebeat
+ #   - name: Imporing elk role
+  #      ansible.builtin.import_role:
+   #      name: elk
+   #      tasks_from: filebeat
 
-    - name: importing node-exporter file
-      ansible.builtin.import_role:
-       name: prometheus
-       tasks_from: node-exporter
+    #  - name: importing node-exporter file
+     #   ansible.builtin.import_role:
+     #    name: prometheus
+      #   tasks_from: node-exporter
 
-    - name: importing grafana file
-      ansible.builtin.import_role:
-       name: grafana
+   #   - name: importing grafana file
+    #    ansible.builtin.import_role:
+     #    name: grafana
 
-    - name: Import prometheus alert-rule-update.yml  
-      ansible.builtin.import_role:
-       name: prometheus
-       tasks_from: alert-rule-update
+     # - name: Import prometheus alert-rule-update.yml  
+     #   ansible.builtin.import_role:
+      #   name: prometheus
+      #   tasks_from: alert-rule-update 
+
+    - name: Install newrelic agent
+      ansible.builtin.shell: curl -Ls https://download.newrelic.com/install/newrelic-cli/scripts/install.sh | bash && sudo NEW_RELIC_API_KEY=NRAK-Z25QTKTTIZPRI7T2MDIRQXA6H93 NEW_RELIC_ACCOUNT_ID=4274147 /usr/local/bin/newrelic install -n infrastructure-agent-installer --tag frontend
 
        
     
