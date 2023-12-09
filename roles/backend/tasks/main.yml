@@ -25,12 +25,22 @@
   vars:
    app_dir: /app
    component: backend
+   app_user: expense
 
 - name: Installing nodejs dependencies
   ansible.builtin.shell: npm install    
   args:
    chdir: /app
-   
+
+- name: Install newrelic nodejs libaray
+  ansible.builtin.shell: npm install newrelic --save
+  args:
+   chdir: /app
+
+- name: Copy newrelic nodejs startup script file
+  ansible.builtin.template:
+   src: run.sh
+   dest: /app/run.sh
 
 - name: Install mysql client
   ansible.builtin.dnf:
