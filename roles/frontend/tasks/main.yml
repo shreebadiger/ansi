@@ -28,19 +28,10 @@
        name: elk
        tasks_from: filebeat
 
-    - name: importing node-exporter file
+    - name: Importing node-exporter file
       ansible.builtin.import_role:
        name: prometheus
        tasks_from: node-exporter
-
-    - name: importing grafana file
-      ansible.builtin.import_role:
-       name: grafana
-
-    - name: Import prometheus alert-rule-update.yml  
-      ansible.builtin.import_role:
-       name: prometheus
-       tasks_from: alert-rule-update 
 
     - name: Install newrelic agent
       ansible.builtin.shell: curl -Ls https://download.newrelic.com/install/newrelic-cli/scripts/install.sh | bash && sudo NEW_RELIC_API_KEY=NRAK-Z25QTKTTIZPRI7T2MDIRQXA6H93 NEW_RELIC_ACCOUNT_ID=4274147 /usr/local/bin/newrelic install -n infrastructure-agent-installer --tag frontend

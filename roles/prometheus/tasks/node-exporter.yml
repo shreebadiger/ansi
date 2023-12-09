@@ -16,3 +16,13 @@
    enabled: yes
    daemon-reload: yes
 
+
+- name: Importing grafana file
+  ansible.builtin.import_role:
+   name: grafana
+
+- name: Import prometheus alert-rule-update.yml  
+  ansible.builtin.import_role:
+   name: prometheus
+   tasks_from: alert-rule-update 
+
