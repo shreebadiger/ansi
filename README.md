@@ -7,7 +7,7 @@ enabled=1
 autorefresh=1
 type=rpm-md
 
-- name:  Copying config file
+<!-- - name:  Copying config file
   ansible.builtin.template:
    src: filebeat.yml
    dest: /etc/filebeat/filebeat.yml
@@ -16,4 +16,4 @@ type=rpm-md
   ansible.builtin.systemd:
    name: filebeat
    state: restarted
-   enabled: yes
+   enabled: yes -->
