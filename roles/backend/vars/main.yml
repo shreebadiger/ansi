@@ -1,0 +1,3 @@
+component: backend
+log_file: /var/log/backend.log
+is_rsyslog_needed: yes

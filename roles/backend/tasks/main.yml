@@ -1,0 +1,69 @@
+- name: Disable nodejs default version
+  ansible.builtin.shell: dnf module disable nodejs -y
+
+- name: Enable nodejs:18 -y
+  ansible.builtin.shell: dnf module enable nodejs:18 -y
+
+- name: Installig nodejs 
+  ansible.builtin.dnf:
+   name: nodejs
+   state: present
+
+- name: Copy backend service
+  ansible.builtin.template:
+   src: backend.service
+   dest: /etc/systemd/system/backend.service
+
+- name: Add application user
+  ansible.builtin.user:
+   name: expense
+
+- name: Importing app pre requisites
+  ansible.builtin.import_role:
+   name: common
+   tasks_from: app-prereq
+  vars:
+   app_dir: /app
+   component: backend
+   app_user: expense
+
+- name: Installing nodejs dependencies
+  ansible.builtin.shell: npm install    
+  args:
+   chdir: /app
+
+- name: Install newrelic nodejs libaray
+  ansible.builtin.shell: npm install newrelic --save
+  args:
+   chdir: /app
+
+- name: Copy newrelic nodejs startup script file
+  ansible.builtin.template:
+   src: run.sh
+   dest: /app/run.sh
+
+- name: Install mysql client
+  ansible.builtin.dnf:
+   name: mysql
+   state: present
+
+- name: load the schema
+  ansible.builtin.shell: mysql -h "{{ lookup ( 'amazon.aws.aws_ssm', 'backend.{{env}}.DB_HOST', region='us-east-1' ) }}"	 -u "{{ lookup ( 'amazon.aws.aws_ssm', 'backend.{{env}}.DB_USER', region='us-east-1' ) }}" -p"{{ lookup ( 'amazon.aws.aws_ssm', 'backend.{{env}}.DB_PASS', region='us-east-1' ) }}" < /app/schema/backend.sql 
+
+- name: Importing elk configuration file
+  ansible.builtin.import_role:  
+   name: elk
+   tasks_from: filebeat
+
+- name: Starting mysql backend service
+  ansible.builtin.systemd:
+   name: backend
+   state: restarted
+   enabled: yes
+   daemon-reload: yes
+
+- name: Importing node-exporter file
+  ansible.builtin.import_role:
+   name: prometheus
+   tasks_from: node-exporter
+

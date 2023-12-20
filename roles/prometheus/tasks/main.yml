@@ -1,0 +1,36 @@
+- name: copy prometheus.yml file
+  ansible.builtin.template:
+   src: prometheus.yml
+   dest: /opt/prometheus/prometheus.yml
+
+- name: Copy alert-rules file
+  ansible.builtin.template:
+   src: common.yml
+   dest: /opt/prometheus/alert-rules/common.yml
+
+- name: List all file in the s3 backet
+  amazon.aws.s3_object:
+   bucket: d76-prometheus-alert-rule
+   mode: list
+  register: out
+
+- name: List all file in the s3 backet
+  amazon.aws.s3_object:
+   bucket: d76-prometheus-alert-rule
+   mode: get
+   object: "{{item}}"
+   dest: /opt/prometheus/alert-rules/{{item}}
+  loop: "{{out.s3_keys}}"
+
+- name: Reload prometheus
+  ansible.builtin.shell: kill -1 $(ps -ef | grep /opt/prometheus/prometheus | grep -v grep | awk '{print $2}')
+  
+- name: copy alertmanger config file
+  ansible.builtin.template:
+   src: alertmanager.yml
+   dest: /opt/alertmanager/alertmanager.yml
+
+- name: Reload alertmanager
+  ansible.builtin.shell: kill -1 $(ps -ef | grep /opt/alertmanager/alertmanager | grep -v grep | awk '{print $2}')
+   
+
