@@ -1,3 +1,6 @@
+- name: Set Hostname
+  ansible.builtin.shell: set-hostname {{env}}-{{component}}
+  
 - name: Disable nodejs default version
   ansible.builtin.shell: dnf module disable nodejs -y
 
