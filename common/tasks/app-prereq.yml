@@ -10,10 +10,16 @@
        owner: "{{app_user}}"
        group: "{{app_user}}"
 
-   -  name: Downlaoding and extracting content
-      ansible.builtin.unarchive:
-       src: https://expense-artifacts.s3.amazonaws.com/{{component}}.zip 
-       dest: "{{ app_dir }}"
-       remote_src: yes
+   #-  name: Downlaoding and extracting content
+    #  ansible.builtin.unarchive:
+     #  src: https://expense-artifacts.s3.amazonaws.com/{{component}}.zip 
+     #  dest: "{{ app_dir }}"
+      # remote_src: yes
        
        #http://artifactory.sbadiger93.online:8081/artifactory/expense-backend/expense-backend-1.0.0.zip
+
+   -  name: Downlaoding and extracting content
+      ansible.builtin.unarchive:
+       src: http://{{ lookup ( 'amazon.aws.aws_ssm', 'artifactory.username', region='us-east-1' ) }}:{{ lookup ( 'amazon.aws.aws_ssm', 'artifactory.password', region='us-east-1' ) }}@artifactory.sbadiger93.online:8081/artifactory/{{project_name}}-{{component}}/{{project_name}}-{{component}}-{{ lookup ( 'amazon.aws.aws_ssm', '{{dev}}.backend.app_version', region='us-east-1' ) }}.zip
+       dest: "{{ app_dir }}"
+       remote_src: yes
