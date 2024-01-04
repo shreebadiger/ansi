@@ -1,10 +1,9 @@
 format_version: 10
 pipelines:
-  test-job:
+  MutableDeployment_Frontend:
     group: defaultGroup
     environment_variables:
-      DEPLOYMENT: "testing"
-      FOO: bar
+      APP_VERSION: ""
     materials:
       deploy:
         git: https://github.com/shreebadiger/ansi.git
