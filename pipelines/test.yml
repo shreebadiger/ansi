@@ -28,7 +28,7 @@ pipelines:
         keep_artifacts: false
         clean_workspace: false
         approval:
-        type: manual
+            type: manual
         jobs:
           deploy:
             timeout: 0
@@ -44,7 +44,7 @@ pipelines:
         keep_artifacts: false
         clean_workspace: false
         approval:
-        type: manual
+            type: manual
         jobs:
           deploy:
             timeout: 0
@@ -60,7 +60,7 @@ pipelines:
         keep_artifacts: false
         clean_workspace: false
         approval:
-        type: manual
+            type: manual
         jobs:
           deploy:
             timeout: 0
