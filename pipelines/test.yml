@@ -2,11 +2,14 @@ format_version: 10
 pipelines:
   test-job:
     group: defaultGroup
+    environment_variables:
+      DEPLOYMENT: testing
+      FOO: bar
     materials:
       deploy:
         git: https://github.com/shreebadiger/ansi.git
-        shallow_clone: false
-        auto_update: true
+        shallow_clone: true
+        auto_update: false
         branch: main
     stages:
     - dev:
