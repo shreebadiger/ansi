@@ -13,7 +13,7 @@ pipelines:
         branch: main
     stages:
     - dev:
-        fetch_materials: false
+        fetch_materials: true
         keep_artifacts: false
         clean_workspace: false
         jobs:
