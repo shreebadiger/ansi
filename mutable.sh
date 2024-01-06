@@ -1,5 +1,6 @@
-ENV = $1
+#ENV = $1
 
-APP_VERSION = $2
+#APP_VERSION = $2
 
-COMPONENT = $3
+#COMPONENT = $3
+env
