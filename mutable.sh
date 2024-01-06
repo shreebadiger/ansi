@@ -8,4 +8,4 @@ env
 
  aws ssm put-parameter  --name "${ENV}.${COMPONENT}.app_version"  --type "String"  --value "${APP_VERSION}"  --overwrite
 
-ansible-playbook -i inv expense.yml -e role_name = ${COMPONENT}  -e env = ${ENV} -e ansible_user = centos -e ansible_password = DevOps321 -e version = ${APP_VERSION}
+ansible-playbook -i inv expense.yml -e role_name=${COMPONENT}  -e env=${ENV} -e ansible_user=centos -e ansible_password=DevOps321 -e version = ${APP_VERSION}
