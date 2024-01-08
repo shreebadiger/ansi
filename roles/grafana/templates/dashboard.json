@@ -110,7 +110,7 @@
             "expr": "(node_memory_MemFree_bytes{name=\"{{env}}-{{component}}\"} + node_memory_Cached_bytes{name=\"{{env}}-{{component}}\"} + node_memory_Buffers_bytes{name=\"{{env}}-{{component}}\"}) / node_memory_MemTotal_bytes{name=\"{{env}}-{{component}}\"} * 100",
             "instant": false,
           {% raw %}
-            "legendFormat": "{{name}}",
+            "legendFormat": "{{instance}}",
           {% endraw %}
             "range": true,
             "refId": "A"
@@ -193,7 +193,7 @@
             "expr": "up{name=\"{{env}}-{{component}}\"}",
             "instant": false,
           {% raw %}
-            "legendFormat": "{{job}}",
+            "legendFormat": "{{name}}",
           {% endraw %}
             "range": true,
             "refId": "A"
